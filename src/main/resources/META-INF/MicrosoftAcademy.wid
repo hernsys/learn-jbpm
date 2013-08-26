@@ -1,0 +1,23 @@
+import org.drools.process.core.datatype.impl.type.StringDataType;
+import org.drools.process.core.datatype.impl.type.ObjectDataType;
+
+[
+  [
+    "name" : "MicrosoftAcademy",
+    "parameters" : [
+      "title" : new StringDataType()
+    ], 
+ 	"results" : [ 
+    	"results" : new ObjectDataType("java.util.Map") 
+  	], 
+    "displayName" : "Microsoft Academy",
+    "icon" : "microsoftacademy.png",
+    "category" : "Search",
+    "eclipse:customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor",
+    "defaultHandler" : "org.msho.app.MicrosoftAcademyWorkItemHandler",
+    "documentation" : "index.html",
+    "dependencies" : [ 
+      "file:./lib/microsoftacademy.jar" 
+    ]
+  ]
+]

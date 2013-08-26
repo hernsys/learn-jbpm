@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="Definition" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="_mapItem" structureRef="java.util.HashMap"/>
+  <bpmn2:itemDefinition id="_modelNumberItem" structureRef="java.lang.String"/>
+  <bpmn2:itemDefinition id="_quantityItem" structureRef="java.lang.String"/>
+  <bpmn2:itemDefinition id="_priorityItem" structureRef="java.lang.String"/>
+  <bpmn2:itemDefinition id="_isAvailableItem" structureRef="Boolean"/>
+  <bpmn2:process id="com.sample.bpmn.sampleHTformvariables" tns:version="1" tns:packageName="defaultPackage" tns:adHoc="false" name="HTFormVariablesSample" isExecutable="true" processType="Private">
+    <bpmn2:property id="map" itemSubjectRef="_mapItem"/>
+    <bpmn2:property id="modelNumber" itemSubjectRef="_modelNumberItem"/>
+    <bpmn2:property id="quantity" itemSubjectRef="_quantityItem"/>
+    <bpmn2:property id="priority" itemSubjectRef="_priorityItem"/>
+    <bpmn2:property id="isAvailable" itemSubjectRef="_isAvailableItem"/>
+    <bpmn2:startEvent id="_1" name="StartProcess">
+      <bpmn2:outgoing>_1-_6</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:userTask id="_3" name="Sample Order  Task">
+      <bpmn2:incoming>_12-_3</bpmn2:incoming>
+      <bpmn2:outgoing>_3-_13</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_1">
+        <bpmn2:dataInput id="_3_ContentInput" name="Content"/>
+        <bpmn2:dataInput id="_3_CommentInput" name="Comment"/>
+        <bpmn2:dataInput id="_3_SkippableInput" name="Skippable"/>
+        <bpmn2:dataInput id="_3_TaskNameInput" name="TaskName"/>
+        <bpmn2:dataInput id="_3_PriorityInput" name="Priority"/>
+        <bpmn2:dataOutput id="_3_priorityOutput" name="priority"/>
+        <bpmn2:dataOutput id="_3_quantityOutput" name="quantity"/>
+        <bpmn2:dataOutput id="_3_modelNumberOutput" name="modelNumber"/>
+        <bpmn2:inputSet id="InputSet_1">
+          <bpmn2:dataInputRefs>_3_ContentInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_3_CommentInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_3_SkippableInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_3_TaskNameInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_3_PriorityInput</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_1">
+          <bpmn2:dataOutputRefs>_3_priorityOutput</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>_3_quantityOutput</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>_3_modelNumberOutput</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
+        <bpmn2:sourceRef>map</bpmn2:sourceRef>
+        <bpmn2:targetRef>_3_ContentInput</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_2">
+        <bpmn2:targetRef>_3_CommentInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_1">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1">Please create an order.</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_2">_3_CommentInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_3">
+        <bpmn2:targetRef>_3_SkippableInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_2">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_3">false</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_4">_3_SkippableInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_4">
+        <bpmn2:targetRef>_3_TaskNameInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_3">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_5">ProcessOrder</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_6">_3_TaskNameInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_5">
+        <bpmn2:targetRef>_3_PriorityInput</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>_3_priorityOutput</bpmn2:sourceRef>
+        <bpmn2:targetRef>priority</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_2">
+        <bpmn2:sourceRef>_3_quantityOutput</bpmn2:sourceRef>
+        <bpmn2:targetRef>quantity</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_3">
+        <bpmn2:sourceRef>_3_modelNumberOutput</bpmn2:sourceRef>
+        <bpmn2:targetRef>modelNumber</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:potentialOwner id="PotentialOwner_1">
+        <bpmn2:resourceAssignmentExpression id="ResourceAssignmentExpression_1">
+          <bpmn2:formalExpression id="FormalExpression_9">krisv</bpmn2:formalExpression>
+        </bpmn2:resourceAssignmentExpression>
+      </bpmn2:potentialOwner>
+    </bpmn2:userTask>
+    <bpmn2:scriptTask id="_6" name="PreProcess" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>_1-_6</bpmn2:incoming>
+      <bpmn2:outgoing>_6-_12</bpmn2:outgoing>
+      <bpmn2:script>map = new java.util.HashMap();
+
+ 
+ 
+map.put(&quot;priority&quot;,&quot;High&quot;);
+
+map.put(&quot;modelNumber&quot;,&quot;1234&quot;);
+
+map.put(&quot;quantity&quot;,&quot;225&quot;);
+
+kcontext.setVariable(&quot;map&quot;, map);
+
+ 
+kcontext.setVariable(&quot;modelNumber&quot;,modelNumber);
+
+kcontext.setVariable(&quot;priority&quot;,priority);
+
+kcontext.setVariable(&quot;quantity&quot;,quantity);
+
+ 
+ 
+</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:exclusiveGateway id="_8" name="Gateway" gatewayDirection="Diverging">
+      <bpmn2:incoming>_13-_8</bpmn2:incoming>
+      <bpmn2:outgoing>_8-_10</bpmn2:outgoing>
+      <bpmn2:outgoing>_8-_11</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:exclusiveGateway id="_12" name="Gateway" gatewayDirection="Converging">
+      <bpmn2:incoming>_6-_12</bpmn2:incoming>
+      <bpmn2:incoming>_10-_12</bpmn2:incoming>
+      <bpmn2:outgoing>_12-_3</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:scriptTask id="_13" name="Check Quantity" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>_3-_13</bpmn2:incoming>
+      <bpmn2:outgoing>_13-_8</bpmn2:outgoing>
+      <bpmn2:script>
+
+int qnt = java.lang.Integer.parseInt(quantity);
+
+ 
+if ( qnt > 1000)
+
+isAvailable = false;
+
+else
+
+isAvailable = true;
+
+ 
+kcontext.setVariable(&quot;isAvailable&quot;,isAvailable);
+
+System.out.println(&quot;***After process order HT, Quantity: &quot; +qnt +&quot; isAvailable condition: &quot; +isAvailable);</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="_12-_3" tns:priority="1" sourceRef="_12" targetRef="_3"/>
+    <bpmn2:sequenceFlow id="_1-_6" tns:priority="1" sourceRef="_1" targetRef="_6"/>
+    <bpmn2:sequenceFlow id="_13-_8" tns:priority="1" sourceRef="_13" targetRef="_8"/>
+    <bpmn2:sequenceFlow id="_8-_10" tns:priority="1" name="Modify" sourceRef="_8" targetRef="_10">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_27" language="http://www.java.com/java">return (!isAvailable);</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_8-_11" tns:priority="1" name="Approve" sourceRef="_8" targetRef="_11">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_28" language="http://www.java.com/java">return (isAvailable);</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_6-_12" tns:priority="1" sourceRef="_6" targetRef="_12"/>
+    <bpmn2:sequenceFlow id="_3-_13" tns:priority="1" sourceRef="_3" targetRef="_13"/>
+    <bpmn2:scriptTask id="_10" name="ModifyOrder" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>_8-_10</bpmn2:incoming>
+      <bpmn2:outgoing>_10-_12</bpmn2:outgoing>
+      <bpmn2:script>System.out.println(&quot;*********Modifying the order&quot;);
+
+ 
+map = new java.util.HashMap();
+
+ 
+ 
+map.put(&quot;modelNumber&quot;,modelNumber);
+
+map.put(&quot;priority&quot;,priority);
+
+map.put(&quot;quantity&quot;,quantity);
+
+kcontext.setVariable(&quot;map&quot;, map);</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="_10-_12" tns:priority="1" sourceRef="_10" targetRef="_12"/>
+    <bpmn2:userTask id="_9" name="Sample Approval Task">
+      <bpmn2:incoming>_11-_9</bpmn2:incoming>
+      <bpmn2:outgoing>_9-_14</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_2">
+        <bpmn2:dataInput id="_9_ContentInput" name="Content"/>
+        <bpmn2:dataInput id="_9_CommentInput" name="Comment"/>
+        <bpmn2:dataInput id="_9_SkippableInput" name="Skippable"/>
+        <bpmn2:dataInput id="_9_TaskNameInput" name="TaskName"/>
+        <bpmn2:dataInput id="_9_PriorityInput" name="Priority"/>
+        <bpmn2:inputSet id="InputSet_2">
+          <bpmn2:dataInputRefs>_9_ContentInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_9_CommentInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_9_SkippableInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_9_TaskNameInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_9_PriorityInput</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_2"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_6">
+        <bpmn2:sourceRef>map</bpmn2:sourceRef>
+        <bpmn2:targetRef>_9_ContentInput</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_7">
+        <bpmn2:targetRef>_9_CommentInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_5">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_10">Sample Arroval task</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_11">_9_CommentInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_8">
+        <bpmn2:targetRef>_9_SkippableInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_6">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_12">false</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_13">_9_SkippableInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_9">
+        <bpmn2:targetRef>_9_TaskNameInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_7">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_14">SampleApprovalTask</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_15">_9_TaskNameInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_10">
+        <bpmn2:targetRef>_9_PriorityInput</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:potentialOwner id="PotentialOwner_2">
+        <bpmn2:resourceAssignmentExpression id="ResourceAssignmentExpression_2">
+          <bpmn2:formalExpression id="FormalExpression_18">john</bpmn2:formalExpression>
+        </bpmn2:resourceAssignmentExpression>
+      </bpmn2:potentialOwner>
+    </bpmn2:userTask>
+    <bpmn2:sequenceFlow id="_9-_14" tns:priority="1" sourceRef="_9" targetRef="_14"/>
+    <bpmn2:task id="_14" tns:taskName="Email" name="Notify complete">
+      <bpmn2:incoming>_9-_14</bpmn2:incoming>
+      <bpmn2:outgoing>_14-_5</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_3">
+        <bpmn2:dataInput id="_14_BodyInput" name="Body"/>
+        <bpmn2:dataInput id="_14_SubjectInput" name="Subject"/>
+        <bpmn2:dataInput id="_14_ToInput" name="To"/>
+        <bpmn2:dataInput id="_14_FromInput" name="From"/>
+        <bpmn2:inputSet id="InputSet_3">
+          <bpmn2:dataInputRefs>_14_BodyInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_14_SubjectInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_14_ToInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_14_FromInput</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_3"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_11">
+        <bpmn2:targetRef>_14_BodyInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_9">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_19">IS AN EXAMPLE</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_20">_14_BodyInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_12">
+        <bpmn2:targetRef>_14_SubjectInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_10">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_21">ENDING</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_22">_14_SubjectInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_13">
+        <bpmn2:targetRef>_14_ToInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_11">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_23">dest@hotmail.com</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_24">_14_ToInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_14">
+        <bpmn2:targetRef>_14_FromInput</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_12">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_25">user</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_26">_14_FromInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_14-_5" tns:priority="1" sourceRef="_14" targetRef="_5"/>
+    <bpmn2:endEvent id="_5" name="EndProcess">
+      <bpmn2:incoming>_14-_5</bpmn2:incoming>
+      <bpmn2:terminateEventDefinition id="TerminateEventDefinition_1"/>
+    </bpmn2:endEvent>
+    <bpmn2:scriptTask id="_11" name="Pre-Approve Process" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>_8-_11</bpmn2:incoming>
+      <bpmn2:outgoing>_11-_9</bpmn2:outgoing>
+      <bpmn2:script>System.out.println(&quot;*********approving the order&quot;);
+
+ 
+map = new java.util.HashMap();
+
+ 
+ 
+map.put(&quot;modelNumber&quot;,modelNumber);
+
+map.put(&quot;priority&quot;,priority);
+
+map.put(&quot;quantity&quot;,quantity);
+
+kcontext.setVariable(&quot;map&quot;, map);</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="_11-_9" tns:priority="1" sourceRef="_11" targetRef="_9"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.sample.bpmn.sampleHTformvariables">
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="_1">
+        <dc:Bounds height="48.0" width="48.0" x="7.0" y="26.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_UserTask_1" bpmnElement="_3">
+        <dc:Bounds height="52.0" width="127.0" x="304.0" y="31.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="_5">
+        <dc:Bounds height="48.0" width="48.0" x="599.0" y="437.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="_6">
+        <dc:Bounds height="48.0" width="80.0" x="113.0" y="28.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_1" bpmnElement="_8" isMarkerVisible="true">
+        <dc:Bounds height="48.0" width="48.0" x="594.0" y="32.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_UserTask_2" bpmnElement="_9">
+        <dc:Bounds height="51.0" width="137.0" x="553.0" y="260.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_2" bpmnElement="_10">
+        <dc:Bounds height="48.0" width="97.0" x="350.0" y="193.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_3" bpmnElement="_11">
+        <dc:Bounds height="48.0" width="132.0" x="552.0" y="180.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_2" bpmnElement="_12" isMarkerVisible="true">
+        <dc:Bounds height="48.0" width="48.0" x="227.0" y="28.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_4" bpmnElement="_13">
+        <dc:Bounds height="48.0" width="104.0" x="460.0" y="34.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_1" bpmnElement="_14">
+        <dc:Bounds height="51.0" width="156.0" x="545.0" y="350.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="_12-_3">
+        <di:waypoint xsi:type="dc:Point" x="276.0" y="52.0"/>
+        <di:waypoint xsi:type="dc:Point" x="304.0" y="57.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="_14-_5">
+        <di:waypoint xsi:type="dc:Point" x="623.0" y="401.0"/>
+        <di:waypoint xsi:type="dc:Point" x="623.0" y="437.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="_1-_6">
+        <di:waypoint xsi:type="dc:Point" x="31.0" y="50.0"/>
+        <di:waypoint xsi:type="dc:Point" x="153.0" y="52.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="_13-_8">
+        <di:waypoint xsi:type="dc:Point" x="512.0" y="58.0"/>
+        <di:waypoint xsi:type="dc:Point" x="618.0" y="56.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="_11-_9">
+        <di:waypoint xsi:type="dc:Point" x="618.0" y="228.0"/>
+        <di:waypoint xsi:type="dc:Point" x="621.0" y="260.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_6" bpmnElement="_8-_10">
+        <di:waypoint xsi:type="dc:Point" x="594.0" y="56.0"/>
+        <di:waypoint xsi:type="dc:Point" x="447.0" y="217.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="_8-_11">
+        <di:waypoint xsi:type="dc:Point" x="618.0" y="81.0"/>
+        <di:waypoint xsi:type="dc:Point" x="618.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="_6-_12">
+        <di:waypoint xsi:type="dc:Point" x="153.0" y="52.0"/>
+        <di:waypoint xsi:type="dc:Point" x="251.0" y="52.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="_10-_12">
+        <di:waypoint xsi:type="dc:Point" x="350.0" y="217.0"/>
+        <di:waypoint xsi:type="dc:Point" x="276.0" y="52.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_10" bpmnElement="_3-_13">
+        <di:waypoint xsi:type="dc:Point" x="431.0" y="57.0"/>
+        <di:waypoint xsi:type="dc:Point" x="460.0" y="58.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_11" bpmnElement="_9-_14">
+        <di:waypoint xsi:type="dc:Point" x="621.0" y="311.0"/>
+        <di:waypoint xsi:type="dc:Point" x="623.0" y="350.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

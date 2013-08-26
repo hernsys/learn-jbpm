@@ -1,0 +1,26 @@
+import org.drools.process.core.datatype.impl.type.ObjectDataType;
+import org.drools.process.core.datatype.impl.type.StringDataType;
+
+[
+
+  [
+    "name" : "Archive",
+    "description" : "Create an archive of files",
+    "version" : "1.0",
+    "parameters" : [
+    	"Archive" : new StringDataType(),
+    	"Files" : new ObjectDataType("java.util.List")
+    ],
+    "displayName" : "Archive",
+    "icon" : "archive.gif",
+    "eclipse:customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor",
+    "category" : "File System",
+    "defaultHandler" : "org.jbpm.process.workitem.archive.ArchiveWorkItemHandler",
+    "documentation" : "index.html",
+    "dependencies" : [
+      "file:./lib/jbpm-archive.jar",
+      "file:./lib/commons-compress-1.0.jar"
+    ]
+  ]
+
+]

@@ -1,0 +1,23 @@
+import org.drools.process.core.datatype.impl.type.StringDataType;
+
+[
+
+  [
+    "name" : "RSS",
+    "description" : "Retrieve an RSS feed",
+    "version" : "1.0",
+    "parameters" : [
+    	"FilePath" : new StringDataType(),
+    	"User" : new StringDataType(),
+    	"Password" : new StringDataType(),
+    	"Body" : new StringDataType()
+    ],
+    "displayName" : "RSS",
+    "eclipse:customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor",
+    "category" : "Data",
+    "defaultHandler" : "org.jbpm.process.workitem.rss.RSSWorkItemHandler",
+    "dependencies" : [
+    ]
+  ]
+
+]

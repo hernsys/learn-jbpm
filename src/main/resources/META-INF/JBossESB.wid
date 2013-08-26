@@ -1,0 +1,23 @@
+import org.drools.process.core.datatype.impl.type.StringDataType;
+import org.drools.process.core.datatype.impl.type.ObjectDataType;
+
+[
+
+  [
+    "name" : "JBossESB",
+    "description" : "Invoke a service on JBoss ESB",
+    "version" : "1.0",
+    "parameters" : [
+    	"Category" : new StringDataType(),
+    	"Service" : new StringDataType(),
+    	"Parameters" : new ObjectDataType("java.util.Map")
+    ],
+    "displayName" : "JBossESB",
+    "eclipse:customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor",
+    "category" : "Service",
+    "defaultHandler" : "org.jbpm.process.workitem.esb.ESBServiceWorkItemHandler",
+    "documentation" : "index.html",
+    "dependencies" : []
+  ]
+
+]

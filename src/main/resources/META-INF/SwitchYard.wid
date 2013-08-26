@@ -1,0 +1,18 @@
+import org.drools.process.core.datatype.impl.type.StringDataType;
+
+[
+
+  [
+    "name" : "SwitchYard",
+    "description" : "Invoke a service on SwitchYard",
+    "version" : "1.0",
+    "parameters" : [
+    	"Service" : new StringDataType()
+    ],
+    "displayName" : "SwitchYard",
+    "eclipse:customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor",
+    "category" : "Service",
+    "dependencies" : []
+  ]
+
+]

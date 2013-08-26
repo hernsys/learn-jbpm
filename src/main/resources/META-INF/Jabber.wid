@@ -1,0 +1,23 @@
+import org.drools.process.core.datatype.impl.type.StringDataType;
+
+[
+
+  [
+    "name" : "Jabber",
+    "description" : "Send a Jabber message",
+    "version" : "1.0",
+    "parameters" : [
+    	"FilePath" : new StringDataType(),
+    	"User" : new StringDataType(),
+    	"Password" : new StringDataType(),
+    	"Body" : new StringDataType()
+    ],
+    "displayName" : "Jabber",
+    "eclipse:customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor",
+    "category" : "Communication",
+    "defaultHandler" : "org.jbpm.process.workitem.jabber.JabberWorkItemHandler",
+    "dependencies" : [
+    ]
+  ]
+
+]

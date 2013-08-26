@@ -1,0 +1,26 @@
+import org.drools.process.core.datatype.impl.type.StringDataType;
+
+[
+
+  [
+    "name" : "Finder",
+    "description" : "Find files on the file system",
+    "version" : "1.0",
+    "parameters" : [
+    	"Path" : new StringDataType(),
+    	"Regex" : new StringDataType()
+    ],
+    "displayName" : "Finder",
+    "icon" : "finder.gif",
+    "eclipse:customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor",
+    "category" : "File System",
+    "defaultHandler" : "org.jbpm.process.workitem.finder.FinderWorkItemHandler",
+    "documentation" : "index.html",
+    "dependencies" : [
+      "file:./lib/jbpm-finder.jar",
+      "file:./lib/commons-finder-1.0-20080905.033643-1.jar",
+      "file:./lib/commons-io-1.3.2.jar"
+    ]
+  ]
+
+]

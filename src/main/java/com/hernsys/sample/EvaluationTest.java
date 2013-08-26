@@ -16,7 +16,7 @@ import org.kie.api.task.model.TaskSummary;
 /**
  * This is a sample test of the evaluation process.
  */
-public class ProcessTest extends JbpmJUnitTestCase {
+public class EvaluationTest extends JbpmJUnitTestCase {
 
 	@Test
 	public void testEvaluationProcess() {
@@ -69,7 +69,7 @@ public class ProcessTest extends JbpmJUnitTestCase {
 		log.close();
 	}
 
-	public ProcessTest() {
+	public EvaluationTest() {
 		super(true);
 		setPersistence(true);
 	}
