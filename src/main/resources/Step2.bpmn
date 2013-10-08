@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="Definition" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="_personItem" structureRef="com.hernsys.model.Person"/>
+  <bpmn2:process id="com.sample.bpmn" tns:version="1" tns:packageName="defaultPackage" tns:adHoc="false" name="Sample Process" isExecutable="true" processType="Private">
+    <bpmn2:extensionElements>
+      <tns:import name="com.hernsys.service.Step2Service"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="person" itemSubjectRef="_personItem"/>
+    <bpmn2:startEvent id="_1" name="StartProcess">
+      <bpmn2:outgoing>_1-_2</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:scriptTask id="_2" name="Script" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>_1-_2</bpmn2:incoming>
+      <bpmn2:outgoing>_2-_3</bpmn2:outgoing>
+      <bpmn2:script>Step2Service.getInstance().helloWorld(person.getName());</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:endEvent id="_3" name="End">
+      <bpmn2:incoming>_2-_3</bpmn2:incoming>
+      <bpmn2:terminateEventDefinition id="TerminateEventDefinition_1"/>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="_1-_2" tns:priority="1" sourceRef="_1" targetRef="_2"/>
+    <bpmn2:sequenceFlow id="_2-_3" tns:priority="1" sourceRef="_2" targetRef="_3"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="org.jbpm.examples.quickstarts.script">
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="_1">
+        <dc:Bounds height="48.0" width="48.0" x="45.0" y="45.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="_2">
+        <dc:Bounds height="48.0" width="80.0" x="131.0" y="46.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="_3">
+        <dc:Bounds height="48.0" width="48.0" x="252.0" y="47.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="_1-_2">
+        <di:waypoint xsi:type="dc:Point" x="69.0" y="69.0"/>
+        <di:waypoint xsi:type="dc:Point" x="171.0" y="70.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="_2-_3">
+        <di:waypoint xsi:type="dc:Point" x="171.0" y="70.0"/>
+        <di:waypoint xsi:type="dc:Point" x="276.0" y="71.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
