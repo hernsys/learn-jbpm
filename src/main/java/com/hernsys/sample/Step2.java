@@ -14,7 +14,7 @@ public class Step2 extends JbpmJUnitTestCase {
 	
 	public Step2() {
 		super(true);
-		//setPersistence(true);
+		setPersistence(true);
 	}
 
 	@Test
@@ -22,7 +22,7 @@ public class Step2 extends JbpmJUnitTestCase {
 		KieSession ksession = createKnowledgeSession("Step2.bpmn");
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("person", new Person("horacio"));
-		ksession.startProcess(params);
+		ksession.startProcess("HR.Step2", params);
 	}
 
 }
