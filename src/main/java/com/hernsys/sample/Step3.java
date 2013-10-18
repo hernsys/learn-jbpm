@@ -13,6 +13,8 @@ import org.kie.internal.builder.KnowledgeBuilderFactory;
 import org.kie.internal.io.ResourceFactory;
 import org.kie.internal.runtime.StatefulKnowledgeSession;
 
+import bitronix.tm.resource.jdbc.PoolingDataSource;
+
 import com.hernsys.model.Person;
 
 //chapter 5 and chapter 6.7 in jbpm6
@@ -21,6 +23,7 @@ public class Step3 extends JbpmJUnitTestCase {
 	public Step3() {
 		super(true);
 		setPersistence(true);
+		//setDataSource();
 	}
 
 	@Test
@@ -35,9 +38,21 @@ public class Step3 extends JbpmJUnitTestCase {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("person", new Person("horacio"));
 		ProcessInstance processInstance = ksession.startProcess("com.hernsys.step3", params);
-
 		
 
+	}
+	
+	private void setDataSource(){
+		PoolingDataSource ds = new PoolingDataSource();
+		ds.setUniqueName("jdbc/jbpm-ds");
+		ds.setClassName("bitronix.tm.resource.jdbc.lrc.LrcXADataSource");
+		ds.setMaxPoolSize(3);
+		ds.setAllowLocalTransactions(true);
+		ds.getDriverProperties().put("user", "sa");
+		ds.getDriverProperties().put("password", "sasa");
+		ds.getDriverProperties().put("URL", "jdbc:h2:tcp://localhost/~/jbpm-db");
+		ds.getDriverProperties().put("driverClassName", "org.h2.Driver");
+		ds.init();
 	}
 
 }
